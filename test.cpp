@@ -31,6 +31,7 @@ class Neuron {
 int main()
 {
     //Init
+    const double ETA = 0.5;
     double error1, error2, totalError;
     double target1, target2;
     double b1 = 0.35, b2 = 0.60;
@@ -73,7 +74,30 @@ int main()
     // --- BACKWARD PASS --- //
     ///////////////////////////
 
-    // TODO ....
+    /// Update w5
+
+    // Differrential Error Total
+    // -------------------------
+    // Differrential o1.output
+    double a = - (target1 - o1.getOut());
+    
+    // Differrential o1.output
+    // -----------------------
+    // Differrential o1.net
+    double b = o1.getOut() * (1 - o1.getOut());
+
+    // Differrential o1.net
+    // -----------------------
+    // Differrential w5.weight
+
+    double c = h1.getOut();
+
+    double d = a * b * c;
+
+    w5.weight = w5.weight - ETA * d;
+    cout << w5.weight << endl;
+
+    // TODO  w6, w7, w8
 
 
     ///////////////////////////
